@@ -1,0 +1,54 @@
+﻿<Window x:Class="ClientManager.MVVM.Views.AuthorizationView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientManager"
+        mc:Ignorable="d"
+        Title="Авторизация"
+        Width="230" Height="300">
+
+    <Window.Resources>
+        <ResourceDictionary Source="Style/AuthorizationStyle.xaml"/>
+    </Window.Resources>
+
+    <Border Style="{StaticResource BorderAuthorization}">
+        <StackPanel Style="{StaticResource ContainerAuthorization}">
+            <!-- Логин пользователя -->
+            <Label Style="{StaticResource LableAuthorization}">Логин</Label>
+            <TextBox Style="{StaticResource LoginAuthorization}"
+                     ToolTip="Введите логин, который вам выдал администратор"
+                     Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}">
+            </TextBox>
+            
+            <!-- Пароль пользователя -->
+            <Label Style="{StaticResource LableAuthorization}">Пароль</Label>
+            <TextBox Style="{StaticResource LoginAuthorization}"
+                     ToolTip="Введите пароль, который вам выдал администратор"
+                     Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}">
+            </TextBox>
+
+            <!-- Сохранить данные о пользователе -->
+            <CheckBox x:Name="IsSave"
+                      Style="{StaticResource CheckBoxAuthorization}"
+                      Content="Запомнить"
+                      IsChecked="True"
+                      Command="{Binding SaveCommand}" CommandParameter="{Binding ElementName=IsSave, Path=IsChecked}">
+            </CheckBox>
+            
+            <!-- Вход в приложение -->
+            <Button Style="{StaticResource InputAuthorization}"
+                    Content="Вход"
+                    ToolTip="Вход в приложение">
+                <Button.InputBindings>
+                    <MouseBinding Gesture="LeftClick" Command="{Binding AuthorizationCommand}"></MouseBinding>
+                </Button.InputBindings>
+            </Button>
+            
+            <!-- Сообщение об ошибке -->
+            <Label Style="{StaticResource BaseLabelText}"
+                   Content="{Binding ErrorMessage}">
+            </Label>
+        </StackPanel>
+    </Border>
+</Window>

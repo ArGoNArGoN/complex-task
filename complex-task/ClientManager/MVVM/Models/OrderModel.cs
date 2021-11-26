@@ -19,7 +19,7 @@ namespace ClientManager.MVVM.Models
 
         private StatusOrderModel statusOrder;
         private ClientModel client;
-        private ClientEmployeeModel clientEmployee;
+        private EmployeeModel clientEmployee;
         
         private Int32 idClient;
         private Int32 idEmployee;
@@ -92,7 +92,7 @@ namespace ClientManager.MVVM.Models
                 OnPropertyChanged(nameof(Client));
             }
         }
-        public ClientEmployeeModel ClientEmployee
+        public EmployeeModel ClientEmployee
         {
             get { return clientEmployee; }
             set

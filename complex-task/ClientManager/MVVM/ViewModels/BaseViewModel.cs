@@ -1,22 +1,17 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace ClientManager.MVVM.Models
+namespace ClientManager.MVVM.ViewModels
 {
-    /// <summary>
-    /// Модель данных без Identity.
-    /// </summary>
-    [Serializable]
-    public abstract class BaseModel
+    internal abstract class BaseViewModel
         : INotifyPropertyChanged
     {
-        public BaseModel() { }
+        protected BaseViewModel()
+        {
+            OnInitializationCommand();
+        }
 
-        /// <summary>
-        /// Указывает, валидна ли модель
-        /// </summary>
-        public abstract Boolean IsValid { get; }
+        protected abstract void OnInitializationCommand();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
